@@ -4,12 +4,12 @@ import {
 } from '../mutation-types';
 
 // initial state
-const state = {
+export const state = {
   alert: { status:'', message: '', visibility: 'hidden'}
 };
 
 // mutations
-const mutations = {
+export const mutations = {
   [SHOW_ALERT] (state, status, message){
     state.alert.message = message;
     state.alert.status = status;

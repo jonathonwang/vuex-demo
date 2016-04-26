@@ -57,6 +57,12 @@ elixir( (mix) => {
       'main.js',
     ], `${basePath.js.dist}/app.js`, basePath.js.src)
 
+
+    .browserify([
+      'Task/mutations.spec.js',
+      'Alert/mutations.spec.js',
+    ], `${basePath.js.src}/test/tests.js`, `${basePath.js.src}/test/`)
+
     // Sass Task
     .sass('app.scss', basePath.sass.dist, basePath.sass.src);
 

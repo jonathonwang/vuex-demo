@@ -9,13 +9,13 @@ import {
 } from '../mutation-types';
 
 // initial state
-const state = {
+export const state = {
   tasks: [],
   newTask: '',
 };
 
 // mutations
-const mutations = {
+export const mutations = {
   [CREATE_TASK] (state, newTask) {
     let newTaskItem = {title: state.newTask, status: 0};
     state.tasks.push(newTaskItem);

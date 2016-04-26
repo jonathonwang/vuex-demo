@@ -11077,6 +11077,7 @@ var clearCompletedTasks = exports.clearCompletedTasks = function clearCompletedT
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.mutations = exports.state = undefined;
 
 var _mutations;
 
@@ -11085,12 +11086,12 @@ var _mutationTypes = require('../mutation-types');
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // initial state
-var state = {
+var state = exports.state = {
   alert: { status: '', message: '', visibility: 'hidden' }
 };
 
 // mutations
-var mutations = (_mutations = {}, _defineProperty(_mutations, _mutationTypes.SHOW_ALERT, function (state, status, message) {
+var mutations = exports.mutations = (_mutations = {}, _defineProperty(_mutations, _mutationTypes.SHOW_ALERT, function (state, status, message) {
   state.alert.message = message;
   state.alert.status = status;
   state.alert.visibility = 'visible';
@@ -11109,6 +11110,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.mutations = exports.state = undefined;
 
 var _mutations;
 
@@ -11117,13 +11119,13 @@ var _mutationTypes = require('../mutation-types');
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // initial state
-var state = {
+var state = exports.state = {
   tasks: [],
   newTask: ''
 };
 
 // mutations
-var mutations = (_mutations = {}, _defineProperty(_mutations, _mutationTypes.CREATE_TASK, function (state, newTask) {
+var mutations = exports.mutations = (_mutations = {}, _defineProperty(_mutations, _mutationTypes.CREATE_TASK, function (state, newTask) {
   var newTaskItem = { title: state.newTask, status: 0 };
   state.tasks.push(newTaskItem);
 }), _defineProperty(_mutations, _mutationTypes.UPDATE_NEW_TASK, function (state, newTitle) {

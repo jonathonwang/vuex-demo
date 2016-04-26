@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "mocha-test": "mocha src/js/test/tests.js"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -14,5 +14,9 @@
     "vue-resource": "^0.7.0",
     "vue-router": "^0.7.13",
     "vuex": "^0.6.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
   }
 }
