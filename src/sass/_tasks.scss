@@ -1,0 +1,23 @@
+ul.task-container{
+  box-shadow: 0 2px 2px 2px rgba(0,0,0,.1);
+  border-radius: 4px;
+}
+.list-group-item:not(.task){
+
+}
+.list-group-item.task{
+  transition: .2s ease all;
+  .btn{
+    transition: .2s ease all;
+    opacity: 0;
+  }
+}
+.list-group-item.task:hover{
+  background-color: darken(#fff,3%);
+  .btn{
+    opacity: 1;
+  }
+}
+.list-group-item.task-completed{
+  opacity: .4;
+}

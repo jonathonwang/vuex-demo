@@ -1,0 +1,37 @@
+input[type="checkbox"]{
+  transition: all .4s ease;
+  border-radius: 50%;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #ccc;
+  overflow: visible;
+  outline: 0;
+  margin-right: 10px;
+  &:before{
+    content: "\f00c";
+    font-family: FontAwesome;
+    color: transparent;
+  }
+  &:hover{
+    border: 1px solid darken(#ccc,10%);
+  }
+
+  &:checked{
+    border: 1px solid #fff;
+    &:before{
+      color: $brand-primary;
+    }
+    &:hover{
+      &:before{
+        color: darken($brand-primary, 20%);
+      }
+    }
+  }
+  &:focus{
+    outline: 0;
+  }
+}
+input[type="text"]{
+  height: 33px;
+}

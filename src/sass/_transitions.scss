@@ -1,0 +1,29 @@
+// Task Transitions
+.task-transition{
+  transition: .4s ease all;
+  overflow: hidden;
+}
+.task-enter, .task-leave{
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 0;
+  opacity: 0;
+}
+
+// Alert transitions
+.alert-transition{
+  transition: .5s ease all;
+  overflow: hidden;
+}
+.alert-enter, .alert-leave{
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 0;
+}
+.message-transition{
+  transition:.5s ease all;
+  opacity:1;
+}
+.message-enter, .message-leave{
+  opacity:0;
+}

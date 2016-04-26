@@ -1,0 +1,7 @@
+{
+  "production" : false,
+  "sourcemaps": true,
+  "assetsPath": "src",
+  "cssOutput": "dist/css",
+  "jsOutput": "dist/js"
+}
