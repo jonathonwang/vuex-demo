@@ -17933,6 +17933,73 @@ module.exports = Vue;
 
 var _chai = require('chai');
 
+var _actions = require('../../vuex/actions');
+
+var actions = _interopRequireWildcard(_actions);
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+// helper for testing action with expected mutations
+var testAction = function testAction(action, args, state, expectedMutations, done) {
+  var count = 0;
+  // mock dispatch
+  var dispatch = function dispatch(name) {
+    for (var _len = arguments.length, payload = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      payload[_key - 1] = arguments[_key];
+    }
+
+    var mutation = expectedMutations[count];
+    (0, _chai.expect)(mutation.name).to.equal(name);
+    if (mutation.payload) {
+      (0, _chai.expect)(mutation.payload).to.deep.equal(payload);
+    }
+    count++;
+    if (count >= expectedMutations.length) {
+      done();
+    }
+  };
+  // call the action with mocked store and arguments
+  action.apply(undefined, [{ dispatch: dispatch }, state].concat(_toConsumableArray(args)));
+
+  // check if no mutations should have been dispatched
+  if (count === 0) {
+    (0, _chai.expect)(expectedMutations.length).to.equal(0);
+    done();
+  }
+};
+
+// Action Tests
+describe('Actions', function () {
+
+  it('createNewTask', function (done) {
+    var state = {
+      tasks: [],
+      newTask: ''
+    };
+    testAction(actions.createNewTask, [], state, [{ name: 'CREATE_TASK' }, { name: 'CLEAR_NEW_TASK' }, { name: 'SHOW_ALERT' }], done);
+  });
+
+  it('hideAlert', function (done) {
+    var state = {
+      alert: { status: 'danger', message: 'Danger Message', visibility: 'visible' }
+    };
+    testAction(actions.hideAlert, [], state, [{ name: 'HIDE_ALERT' }], done);
+  });
+});
+
+},{"../../vuex/actions":46,"chai":5,"vue":42}],44:[function(require,module,exports){
+'use strict';
+
+var _chai = require('chai');
+
 var _Alert = require('../../vuex/modules/Alert');
 
 var _vue = require('vue');
@@ -17947,6 +18014,7 @@ var HIDE_ALERT = _Alert.mutations.HIDE_ALERT;
 
 
 describe('Alert Mutations', function () {
+
   it('SHOW_ALERT', function () {
     var state = {
       alert: { status: '', message: '', visibility: 'hidden' }
@@ -17957,16 +18025,18 @@ describe('Alert Mutations', function () {
     (0, _chai.expect)(state.alert.status).to.equal('danger');
     (0, _chai.expect)(state.alert.message).to.equal('Danger Message');
     (0, _chai.expect)(state.alert.visibility).to.equal('visible');
-  });
+  }); // Show Alert
+
   it('HIDE_ALERT', function () {
     var state = {
-      alert: { status: 'danger', message: 'Danger Message', visibility: 'hidden' }
+      alert: { status: 'danger', message: 'Danger Message', visibility: 'visible' }
     };
+    HIDE_ALERT(state);
     (0, _chai.expect)(state.alert.visibility).to.equal('hidden');
-  });
-});
+  }); // Hide Alert
+}); // Alert Mutations
 
-},{"../../vuex/modules/Alert":45,"chai":5,"vue":42}],44:[function(require,module,exports){
+},{"../../vuex/modules/Alert":47,"chai":5,"vue":42}],45:[function(require,module,exports){
 'use strict';
 
 var _chai = require('chai');
@@ -17990,6 +18060,7 @@ var CLEAR_COMPLETED_TASKS = _Task.mutations.CLEAR_COMPLETED_TASKS;
 
 
 describe('Task Mutations', function () {
+
   it('CREATE_TASK', function () {
     var state = {
       tasks: [],
@@ -17998,7 +18069,8 @@ describe('Task Mutations', function () {
     CREATE_TASK(state, state.newTask);
     (0, _chai.expect)(state.tasks[0].title).to.equal('Hello World');
     (0, _chai.expect)(state.tasks[0].status).to.equal(0);
-  });
+  }); // Create_Task
+
   it('UPDATE_NEW_TASK', function () {
     var state = {
       tasks: [],
@@ -18007,7 +18079,8 @@ describe('Task Mutations', function () {
     var newTitle = 'Hello World';
     UPDATE_NEW_TASK(state, newTitle);
     (0, _chai.expect)(state.newTask).to.equal('Hello World');
-  });
+  }); // Update_New_Task
+
   it('CLEAR_NEW_TASK', function () {
     var state = {
       tasks: [],
@@ -18015,7 +18088,8 @@ describe('Task Mutations', function () {
     };
     CLEAR_NEW_TASK(state);
     (0, _chai.expect)(state.newTask).to.equal('');
-  });
+  }); // Clear_New_Task
+
   it('DELETE_TASK', function () {
     var taskToDelete = { title: 'Hello World', status: 0 };
     var state = {
@@ -18024,7 +18098,8 @@ describe('Task Mutations', function () {
     };
     DELETE_TASK(state, taskToDelete);
     (0, _chai.expect)(state.tasks.length).to.equal(0);
-  });
+  }); // Delete_Task
+
   it('COMPLETE_TASK', function () {
     var taskToComplete = { title: 'Hello World', status: 0 };
     var state = {
@@ -18033,7 +18108,8 @@ describe('Task Mutations', function () {
     };
     COMPLETE_TASK(state, taskToComplete);
     (0, _chai.expect)(state.tasks[0].status).to.equal(1);
-  });
+  }); // Complete_Task
+
   it('UNCOMPLETE_TASK', function () {
     var taskToUncomplete = { title: 'Hello World', status: 1 };
     var state = {
@@ -18042,7 +18118,8 @@ describe('Task Mutations', function () {
     };
     UNCOMPLETE_TASK(state, taskToUncomplete);
     (0, _chai.expect)(state.tasks[0].status).to.equal(0);
-  });
+  }); // Uncomplete_Task
+
   it('CLEAR_COMPLETED_TASKS', function () {
     var tasksToClear = [{ title: 'Hello World', status: 1 }, { title: 'Hello World2', status: 1 }, { title: 'Hello World3', status: 1 }, { title: 'Hello World4', status: 1 }];
     var incompleteTask = { title: 'Not Done', status: 0 };
@@ -18053,10 +18130,67 @@ describe('Task Mutations', function () {
     CLEAR_COMPLETED_TASKS(state, tasksToClear);
     (0, _chai.expect)(state.tasks.length).to.equal(1);
     (0, _chai.expect)(state.tasks[0].status).to.equal(0);
-  });
-});
+  }); // Clear_Completed_Tasks
+}); // Task Mutations
 
-},{"../../vuex/modules/Task":46,"chai":5,"vue":42}],45:[function(require,module,exports){
+},{"../../vuex/modules/Task":48,"chai":5,"vue":42}],46:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clearCompletedTasks = exports.toggleTaskStatus = exports.deleteTask = exports.updateNewTask = exports.hideAlert = exports.createNewTask = undefined;
+
+var _mutationTypes = require('./mutation-types');
+
+var types = _interopRequireWildcard(_mutationTypes);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var createNewTask = exports.createNewTask = function createNewTask(_ref, newTask) {
+  var dispatch = _ref.dispatch;
+
+  if (newTask !== '') {
+    dispatch(types.CREATE_TASK);
+    dispatch(types.CLEAR_NEW_TASK);
+    dispatch(types.SHOW_ALERT, 'success', 'Task "' + newTask + '" Successfully Created');
+  } else {
+    dispatch(types.SHOW_ALERT, 'danger', 'New Task Cannot Be Empty');
+  }
+};
+var hideAlert = exports.hideAlert = function hideAlert(_ref2) {
+  var dispatch = _ref2.dispatch;
+
+  dispatch(types.HIDE_ALERT);
+};
+var updateNewTask = exports.updateNewTask = function updateNewTask(_ref3, e) {
+  var dispatch = _ref3.dispatch;
+
+  dispatch(types.UPDATE_NEW_TASK, e.target.value);
+};
+var deleteTask = exports.deleteTask = function deleteTask(_ref4, task) {
+  var dispatch = _ref4.dispatch;
+
+  dispatch(types.DELETE_TASK, task);
+  dispatch(types.SHOW_ALERT, 'info', 'Task "' + task.title + '" Successfully Deleted');
+};
+var toggleTaskStatus = exports.toggleTaskStatus = function toggleTaskStatus(_ref5, task) {
+  var dispatch = _ref5.dispatch;
+
+  if (task.status === 0) {
+    dispatch(types.COMPLETE_TASK, task);
+  } else {
+    dispatch(types.UNCOMPLETE_TASK, task);
+  }
+};
+var clearCompletedTasks = exports.clearCompletedTasks = function clearCompletedTasks(_ref6, completedTasks) {
+  var dispatch = _ref6.dispatch;
+
+  dispatch(types.CLEAR_COMPLETED_TASKS, completedTasks);
+  dispatch(types.SHOW_ALERT, 'info', completedTasks.length + ' Completed Tasks Successfully Deleted');
+};
+
+},{"./mutation-types":49}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18089,7 +18223,7 @@ exports.default = {
   mutations: mutations
 };
 
-},{"../mutation-types":47}],46:[function(require,module,exports){
+},{"../mutation-types":49}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18155,7 +18289,7 @@ exports.default = {
   mutations: mutations
 };
 
-},{"../mutation-types":47}],47:[function(require,module,exports){
+},{"../mutation-types":49}],49:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18173,6 +18307,6 @@ var CLEAR_COMPLETED_TASKS = exports.CLEAR_COMPLETED_TASKS = 'CLEAR_COMPLETED_TAS
 var SHOW_ALERT = exports.SHOW_ALERT = 'SHOW_ALERT';
 var HIDE_ALERT = exports.HIDE_ALERT = 'HIDE_ALERT';
 
-},{}]},{},[44,43]);
+},{}]},{},[45,44,43]);
 
 //# sourceMappingURL=tests.js.map

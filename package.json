@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "mocha-test": "mocha src/js/test/tests.js"
+    "mocha-test": "mocha src/js/test/tests.js",
+    "mocha-watch": "mocha src/js/test/tests.js --watch"
   },
   "author": "",
   "license": "UNLICENSED",

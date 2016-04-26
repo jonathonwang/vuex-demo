@@ -57,10 +57,11 @@ elixir( (mix) => {
       'main.js',
     ], `${basePath.js.dist}/app.js`, basePath.js.src)
 
-
+    // Mocha Tests Task
     .browserify([
       'Task/mutations.spec.js',
       'Alert/mutations.spec.js',
+      'Actions/actions.spec.js'
     ], `${basePath.js.src}/test/tests.js`, `${basePath.js.src}/test/`)
 
     // Sass Task
