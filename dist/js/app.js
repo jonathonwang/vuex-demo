@@ -11034,7 +11034,7 @@ var createNewTask = exports.createNewTask = function createNewTask(_ref, newTask
   if (newTask !== '') {
     dispatch(types.CREATE_TASK);
     dispatch(types.CLEAR_NEW_TASK);
-    dispatch(types.SHOW_ALERT, 'success', 'Task Successfully Created');
+    dispatch(types.SHOW_ALERT, 'success', 'Task "' + newTask + '" Successfully Created');
   } else {
     dispatch(types.SHOW_ALERT, 'danger', 'New Task Cannot Be Empty');
   }
@@ -11053,7 +11053,7 @@ var deleteTask = exports.deleteTask = function deleteTask(_ref4, task) {
   var dispatch = _ref4.dispatch;
 
   dispatch(types.DELETE_TASK, task);
-  dispatch(types.SHOW_ALERT, 'info', 'Task Successfully Deleted');
+  dispatch(types.SHOW_ALERT, 'info', 'Task "' + task.title + '" Successfully Deleted');
 };
 var toggleTaskStatus = exports.toggleTaskStatus = function toggleTaskStatus(_ref5, task) {
   var dispatch = _ref5.dispatch;
@@ -11068,7 +11068,7 @@ var clearCompletedTasks = exports.clearCompletedTasks = function clearCompletedT
   var dispatch = _ref6.dispatch;
 
   dispatch(types.CLEAR_COMPLETED_TASKS, completedTasks);
-  dispatch(types.SHOW_ALERT, 'info', 'Completed Tasks Successfully Deleted');
+  dispatch(types.SHOW_ALERT, 'info', completedTasks.length + ' Completed Tasks Successfully Deleted');
 };
 
 },{"./mutation-types":11}],9:[function(require,module,exports){

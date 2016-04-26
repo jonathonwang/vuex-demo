@@ -4,7 +4,7 @@ export const createNewTask = ({ dispatch }, newTask) => {
   if(newTask !== ''){
     dispatch(types.CREATE_TASK);
     dispatch(types.CLEAR_NEW_TASK);
-    dispatch(types.SHOW_ALERT,'success','Task Successfully Created');
+    dispatch(types.SHOW_ALERT,'success',`Task "${newTask}" Successfully Created`);
   }
   else{
     dispatch(types.SHOW_ALERT,'danger','New Task Cannot Be Empty');
@@ -18,7 +18,7 @@ export const updateNewTask = ({ dispatch }, e) => {
 };
 export const deleteTask = ({ dispatch }, task) => {
   dispatch(types.DELETE_TASK, task);
-  dispatch(types.SHOW_ALERT,'info','Task Successfully Deleted');
+  dispatch(types.SHOW_ALERT,'info',`Task "${task.title}" Successfully Deleted`);
 };
 export const toggleTaskStatus = ({ dispatch }, task) => {
   if(task.status === 0){
@@ -30,5 +30,5 @@ export const toggleTaskStatus = ({ dispatch }, task) => {
 };
 export const clearCompletedTasks = ({ dispatch }, completedTasks) => {
   dispatch(types.CLEAR_COMPLETED_TASKS, completedTasks);
-  dispatch(types.SHOW_ALERT,'info','Completed Tasks Successfully Deleted');
+  dispatch(types.SHOW_ALERT,'info',`${completedTasks.length} Completed Tasks Successfully Deleted`);
 };
