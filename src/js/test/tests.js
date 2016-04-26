@@ -17997,6 +17997,7 @@ describe('Task Mutations', function () {
     };
     CREATE_TASK(state, state.newTask);
     (0, _chai.expect)(state.tasks[0].title).to.equal('Hello World');
+    (0, _chai.expect)(state.tasks[0].status).to.equal(0);
   });
   it('UPDATE_NEW_TASK', function () {
     var state = {
@@ -18044,12 +18045,14 @@ describe('Task Mutations', function () {
   });
   it('CLEAR_COMPLETED_TASKS', function () {
     var tasksToClear = [{ title: 'Hello World', status: 1 }, { title: 'Hello World2', status: 1 }, { title: 'Hello World3', status: 1 }, { title: 'Hello World4', status: 1 }];
+    var incompleteTask = { title: 'Not Done', status: 0 };
     var state = {
-      tasks: [].concat(tasksToClear),
+      tasks: [].concat(tasksToClear, [incompleteTask]),
       newTask: ''
     };
     CLEAR_COMPLETED_TASKS(state, tasksToClear);
-    (0, _chai.expect)(state.tasks.length).to.equal(0);
+    (0, _chai.expect)(state.tasks.length).to.equal(1);
+    (0, _chai.expect)(state.tasks[0].status).to.equal(0);
   });
 });
 

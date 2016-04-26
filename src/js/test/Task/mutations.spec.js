@@ -20,6 +20,7 @@ describe('Task Mutations', () => {
     };
     CREATE_TASK(state,state.newTask);
     expect(state.tasks[0].title).to.equal('Hello World');
+    expect(state.tasks[0].status).to.equal(0);
   });
   it('UPDATE_NEW_TASK', ()=> {
     let state = {
@@ -67,11 +68,13 @@ describe('Task Mutations', () => {
   });
   it('CLEAR_COMPLETED_TASKS', () => {
     let tasksToClear = [ {title: 'Hello World', status: 1}, {title: 'Hello World2', status: 1}, {title: 'Hello World3', status: 1}, {title: 'Hello World4', status: 1} ];
+    let incompleteTask = {title: 'Not Done', status: 0};
     let state = {
-      tasks: [...tasksToClear],
+      tasks: [...tasksToClear,incompleteTask],
       newTask: ''
     };
     CLEAR_COMPLETED_TASKS(state,tasksToClear);
-    expect(state.tasks.length).to.equal(0);
+    expect(state.tasks.length).to.equal(1);
+    expect(state.tasks[0].status).to.equal(0);
   });
 });
