@@ -17986,6 +17986,15 @@ describe('Actions', function () {
     testAction(actions.createNewTask, [], state, [{ name: 'CREATE_TASK' }, { name: 'CLEAR_NEW_TASK' }, { name: 'SHOW_ALERT' }], done);
   });
 
+  it('createNewTask No-Title', function (done) {
+    var newTask = '';
+    var state = {
+      tasks: [],
+      newTask: ''
+    };
+    testAction(actions.createNewTask, [newTask], state, [{ name: 'SHOW_ALERT' }], done);
+  });
+
   it('hideAlert', function (done) {
     var state = {
       alert: { status: 'danger', message: 'Danger Message', visibility: 'visible' }

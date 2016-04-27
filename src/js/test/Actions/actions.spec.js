@@ -43,6 +43,17 @@ describe('Actions', () => {
     ], done );
   });
 
+  it('createNewTask No-Title', (done) => {
+    let newTask = '';
+    let state = {
+      tasks: [],
+      newTask: ''
+    };
+    testAction(actions.createNewTask, [newTask], state, [
+      { name: 'SHOW_ALERT' }
+    ], done );
+  });
+
   it('hideAlert', (done) => {
     let state = {
       alert: { status:'danger', message: 'Danger Message', visibility: 'visible' }
