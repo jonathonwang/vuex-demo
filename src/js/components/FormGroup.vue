@@ -2,14 +2,14 @@
 </style>
 
 <template>
-  <h1 class="text-center">Todo</h1>
+  <h1 class="text-center text--white">Todo</h1>
   <ul class="list-group task-container">
     <li class="list-group-item">
       <form action="" style="margin-bottom:0;"  @submit.prevent="createNewTask(newTask)">
         <div class="input-group">
           <input type="text" class="form-control" :value="newTask" @input="updateNewTask($event.target.value)" placeholder="Create Some Tasks ...">
           <span class="input-group-btn">
-            <button class="btn btn-primary"><span class="fa fa-plus"></span> Create</button>
+            <button class="btn btn-primary"><span class="fa fa-plus"></span></button>
           </span>
         </div>
       </form>
@@ -35,10 +35,10 @@
       <button class="btn btn-danger pull-right btn-xs btn-circle" @click.prevent="deleteTask(task)"><span class="fa fa-trash-o"></span></button>
     </li>
     <!-- Clear Tasks Filters -->
-    <li class="list-group-item task-completed" transition="task" v-if="completeTasks.length > 0">
+    <li class="list-group-item" transition="task" v-if="completeTasks.length > 0">
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-block btn-default" @click.prevent="clearCompletedTasks(completeTasks)">Clear Completed Tasks</button>
+          <button class="btn btn-block btn-default btn-lg" @click.prevent="clearCompletedTasks(completeTasks)">Clear Completed Tasks</button>
         </div>
       </div>
     </li>

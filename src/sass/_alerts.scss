@@ -8,4 +8,21 @@ span.close-alert:hover{
   left: 0;
   right: 0;
   z-index: 20;
+  border: 0 solid transparent;
+}
+.alert-danger{
+  background-color: $alert-danger;
+  color: lighten($alert-danger, 50%);
+}
+.alert-success{
+  background-color: $alert-success;
+  color: lighten($alert-success, 50%);
+}
+.alert-warning{
+  background-color: $alert-warning;
+  color: lighten($alert-warning, 50%);
+}
+.alert-info{
+  background-color: $alert-info;
+  color: lighten($alert-info, 50%);
 }

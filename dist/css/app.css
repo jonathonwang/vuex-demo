@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -7933,7 +7934,19 @@ button.close {
 body {
   padding-top: 100px;
   min-height: 100vh;
-  background-color: #fafafb; }
+  background: -webkit-linear-gradient(top, #455EFE 40%, #3849AC 40%);
+  background: linear-gradient(to bottom, #455EFE 40%, #3849AC 40%); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif; }
+
+p {
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+  color: #76838D;
+  font-weight: 300; }
+
+.text--white {
+  color: #fff; }
 
 span.close-alert:hover {
   cursor: pointer; }
@@ -7944,11 +7957,72 @@ span.close-alert:hover {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 20; }
+  z-index: 20;
+  border: 0 solid transparent; }
+
+.alert-danger {
+  background-color: #F03E6F;
+  color: white; }
+
+.alert-success {
+  background-color: #30B399;
+  color: #e9f9f6; }
+
+.alert-warning {
+  background-color: #EBC142;
+  color: white; }
+
+.alert-info {
+  background-color: #03A9F4;
+  color: #f7fcff; }
+
+.label-danger {
+  background-color: #F03E6F; }
+
+.label-warning {
+  background-color: #EBC142; }
+
+.label-info {
+  background-color: #03A9F4; }
+
+.label-success {
+  background-color: #30B399; }
+
+.btn {
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+  -webkit-transition: .4s ease all;
+  transition: .4s ease all;
+  border: 0 solid transparent; }
+  .btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0 transparent; }
+
+.btn-primary {
+  background-color: #455EFE; }
+  .btn-primary:hover {
+    background-color: #3849AC; }
+  .btn-primary:focus {
+    background-color: #3849AC; }
+
+.btn-default {
+  color: #A2ABB2;
+  background-color: #fff;
+  border: 1px solid transparent; }
+  .btn-default:hover {
+    color: #455EFE;
+    background-color: #fff;
+    border: 1px solid #455EFE; }
+
+.btn-danger {
+  background-color: #F03E6F; }
+  .btn-danger:hover {
+    background-color: #ee265d; }
+  .btn-danger:focus {
+    background-color: #ee265d; }
 
 .btn-circle {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   padding: 0; }
 
@@ -7991,9 +8065,17 @@ ul.task-container {
   box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.1);
   border-radius: 4px; }
 
+.list-group-item {
+  padding-left: 20px;
+  padding-right: 20px; }
+
 .list-group-item.task {
   -webkit-transition: .2s ease all;
-  transition: .2s ease all; }
+  transition: .2s ease all;
+  font-size: 18px;
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+  color: #76838D;
+  font-weight: 300; }
   .list-group-item.task .btn {
     -webkit-transition: .2s ease all;
     transition: .2s ease all;
@@ -8005,7 +8087,16 @@ ul.task-container {
     opacity: 1; }
 
 .list-group-item.task-completed {
-  opacity: .4; }
+  background-color: whitesmoke;
+  color: #A2ABB2; }
+
+::-moz-selection {
+  background-color: #F03E6F;
+  color: white; }
+
+::selection {
+  background-color: #F03E6F;
+  color: white; }
 
 input[type="checkbox"] {
   -webkit-transition: all .4s ease;
@@ -8014,12 +8105,13 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border: 1px solid #ccc;
   overflow: visible;
   outline: 0;
-  margin-right: 10px; }
+  margin-right: 10px;
+  margin-top: 0; }
   input[type="checkbox"]:before {
     content: "\f00c";
     font-family: FontAwesome;
@@ -8027,15 +8119,42 @@ input[type="checkbox"] {
   input[type="checkbox"]:hover {
     border: 1px solid #b3b3b3; }
   input[type="checkbox"]:checked {
-    border: 1px solid #fff; }
+    border: 1px solid transparent; }
     input[type="checkbox"]:checked:before {
-      color: #337ab7; }
+      color: #455EFE; }
     input[type="checkbox"]:checked:hover:before {
-      color: #1d4568; }
+      color: #3849AC; }
   input[type="checkbox"]:focus {
     outline: 0; }
 
-input[type="text"] {
-  height: 33px; }
+::-webkit-input-placeholder {
+  color: #A2ABB2;
+  font-size: 18px;
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif; }
+
+.input-group {
+  width: 100%; }
+  .input-group input[type="text"].form-control {
+    color: #455EFE;
+    font-size: 18px;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    padding-left: 0;
+    padding-right: 0;
+    -webkit-transition: .5s ease all;
+    transition: .5s ease all;
+    border: 0 solid transparent;
+    box-shadow: 0 0 0 0 transparent;
+    border-radius: 0;
+    background-color: transparent; }
+    .input-group input[type="text"].form-control:focus {
+      outline: 0;
+      box-shadow: 0 0 0 0 transparent; }
+  .input-group .input-group-btn:last-child .btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; }
 
 /*# sourceMappingURL=app.css.map */

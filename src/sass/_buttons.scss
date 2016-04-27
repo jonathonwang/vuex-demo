@@ -1,6 +1,43 @@
+.btn{
+  font-family: $font;
+  transition: .4s ease all;
+  border: 0 solid transparent;
+  &:focus{
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  }
+}
+.btn-primary{
+  background-color: $brand-primary;
+  &:hover{
+    background-color: $brand-primary-dark;
+  }
+  &:focus{
+    background-color: $brand-primary-dark;
+  }
+}
+.btn-default{
+  color: $brand-secondary-light;
+  background-color: #fff;
+  border: 1px solid transparent;
+  &:hover{
+    color: $brand-primary;
+    background-color: #fff;
+    border: 1px solid $brand-primary;
+  }
+}
+.btn-danger{
+  background-color: $alert-danger;
+  &:hover{
+    background-color: darken($alert-danger,5%);
+  }
+  &:focus{
+    background-color: darken($alert-danger,5%);
+  }
+}
 .btn-circle{
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   padding: 0;
 }
