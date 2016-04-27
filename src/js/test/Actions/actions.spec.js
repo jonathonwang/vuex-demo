@@ -20,8 +20,7 @@ const testAction = (action, args, state, expectedMutations, done) => {
     }
   };
   // call the action with mocked store and arguments
-  action({dispatch}, state, ...args);
-
+  action({dispatch, state}, ...args);
   // check if no mutations should have been dispatched
   if (count === 0) {
     expect(expectedMutations.length).to.equal(0);
@@ -35,7 +34,7 @@ describe('Actions', () => {
   it('createNewTask', (done) => {
     let state = {
       tasks: [],
-      newTask: '',
+      newTask: 'Hello World'
     };
     testAction(actions.createNewTask, [], state, [
       { name: 'CREATE_TASK' },
@@ -49,7 +48,63 @@ describe('Actions', () => {
       alert: { status:'danger', message: 'Danger Message', visibility: 'visible' }
     };
     testAction(actions.hideAlert, [], state, [
-      { name: 'HIDE_ALERT' },
+      { name: 'HIDE_ALERT' }
+    ], done );
+  });
+
+  it('updateNewTask', (done) => {
+    let state = {
+      tasks: [],
+      newTask: ''
+    };
+    testAction(actions.updateNewTask, [], state, [
+      { name: 'UPDATE_NEW_TASK' },
+    ], done );
+  });
+
+  it('deleteTask', (done) => {
+    let taskToDelete = {title: 'Hello World', status: 0};
+    let state = {
+      tasks: [taskToDelete],
+      newTask: ''
+    };
+    testAction(actions.deleteTask, [taskToDelete], state, [
+      { name: 'DELETE_TASK' },
+      { name: 'SHOW_ALERT' }
+    ], done );
+  });
+
+  it('toggleTaskStatus Complete', (done) => {
+    let taskToToggle = {title: 'Hello World', status: 0};
+    let state = {
+      tasks: [taskToToggle],
+      newTask: ''
+    };
+    testAction(actions.toggleTaskStatus, [taskToToggle], state, [
+      { name: 'COMPLETE_TASK' },
+    ], done );
+  });
+
+  it('toggleTaskStatus Incomplete', (done) => {
+    let taskToToggle = {title: 'Hello World', status: 1};
+    let state = {
+      tasks: [taskToToggle],
+      newTask: ''
+    };
+    testAction(actions.toggleTaskStatus, [taskToToggle], state, [
+      { name: 'UNCOMPLETE_TASK' },
+    ], done );
+  });
+
+  it('clearCompletedTasks', (done) => {
+    let completedTasksToClear = [ {title: 'Hello World1', status: 1}, {title: 'Hello World2', status: 1}, {title: 'Hello World3', status: 1},];
+    let state = {
+      tasks: [...completedTasksToClear],
+      newTask: ''
+    };
+    testAction(actions.clearCompletedTasks, [...completedTasksToClear], state, [
+      { name: 'CLEAR_COMPLETED_TASKS' },
+      { name: 'SHOW_ALERT' }
     ], done );
   });
 

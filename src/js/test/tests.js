@@ -17967,8 +17967,7 @@ var testAction = function testAction(action, args, state, expectedMutations, don
     }
   };
   // call the action with mocked store and arguments
-  action.apply(undefined, [{ dispatch: dispatch }, state].concat(_toConsumableArray(args)));
-
+  action.apply(undefined, [{ dispatch: dispatch, state: state }].concat(_toConsumableArray(args)));
   // check if no mutations should have been dispatched
   if (count === 0) {
     (0, _chai.expect)(expectedMutations.length).to.equal(0);
@@ -17982,7 +17981,7 @@ describe('Actions', function () {
   it('createNewTask', function (done) {
     var state = {
       tasks: [],
-      newTask: ''
+      newTask: 'Hello World'
     };
     testAction(actions.createNewTask, [], state, [{ name: 'CREATE_TASK' }, { name: 'CLEAR_NEW_TASK' }, { name: 'SHOW_ALERT' }], done);
   });
@@ -17992,6 +17991,50 @@ describe('Actions', function () {
       alert: { status: 'danger', message: 'Danger Message', visibility: 'visible' }
     };
     testAction(actions.hideAlert, [], state, [{ name: 'HIDE_ALERT' }], done);
+  });
+
+  it('updateNewTask', function (done) {
+    var state = {
+      tasks: [],
+      newTask: ''
+    };
+    testAction(actions.updateNewTask, [], state, [{ name: 'UPDATE_NEW_TASK' }], done);
+  });
+
+  it('deleteTask', function (done) {
+    var taskToDelete = { title: 'Hello World', status: 0 };
+    var state = {
+      tasks: [taskToDelete],
+      newTask: ''
+    };
+    testAction(actions.deleteTask, [taskToDelete], state, [{ name: 'DELETE_TASK' }, { name: 'SHOW_ALERT' }], done);
+  });
+
+  it('toggleTaskStatus Complete', function (done) {
+    var taskToToggle = { title: 'Hello World', status: 0 };
+    var state = {
+      tasks: [taskToToggle],
+      newTask: ''
+    };
+    testAction(actions.toggleTaskStatus, [taskToToggle], state, [{ name: 'COMPLETE_TASK' }], done);
+  });
+
+  it('toggleTaskStatus Incomplete', function (done) {
+    var taskToToggle = { title: 'Hello World', status: 1 };
+    var state = {
+      tasks: [taskToToggle],
+      newTask: ''
+    };
+    testAction(actions.toggleTaskStatus, [taskToToggle], state, [{ name: 'UNCOMPLETE_TASK' }], done);
+  });
+
+  it('clearCompletedTasks', function (done) {
+    var completedTasksToClear = [{ title: 'Hello World1', status: 1 }, { title: 'Hello World2', status: 1 }, { title: 'Hello World3', status: 1 }];
+    var state = {
+      tasks: [].concat(completedTasksToClear),
+      newTask: ''
+    };
+    testAction(actions.clearCompletedTasks, [].concat(completedTasksToClear), state, [{ name: 'CLEAR_COMPLETED_TASKS' }, { name: 'SHOW_ALERT' }], done);
   });
 });
 
@@ -18163,10 +18206,10 @@ var hideAlert = exports.hideAlert = function hideAlert(_ref2) {
 
   dispatch(types.HIDE_ALERT);
 };
-var updateNewTask = exports.updateNewTask = function updateNewTask(_ref3, e) {
+var updateNewTask = exports.updateNewTask = function updateNewTask(_ref3, value) {
   var dispatch = _ref3.dispatch;
 
-  dispatch(types.UPDATE_NEW_TASK, e.target.value);
+  dispatch(types.UPDATE_NEW_TASK, value);
 };
 var deleteTask = exports.deleteTask = function deleteTask(_ref4, task) {
   var dispatch = _ref4.dispatch;

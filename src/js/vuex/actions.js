@@ -13,8 +13,8 @@ export const createNewTask = ({ dispatch }, newTask) => {
 export const hideAlert = ({ dispatch }) => {
   dispatch(types.HIDE_ALERT);
 };
-export const updateNewTask = ({ dispatch }, e) => {
-  dispatch(types.UPDATE_NEW_TASK, e.target.value);
+export const updateNewTask = ({ dispatch }, value) => {
+  dispatch(types.UPDATE_NEW_TASK, value);
 };
 export const deleteTask = ({ dispatch }, task) => {
   dispatch(types.DELETE_TASK, task);
