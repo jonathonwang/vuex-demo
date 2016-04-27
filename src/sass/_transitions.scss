@@ -13,12 +13,10 @@
 // Alert transitions
 .alert-transition{
   transition: .5s ease all;
-  overflow: hidden;
+  opacity: 1;
 }
 .alert-enter, .alert-leave{
-  padding-top: 0;
-  padding-bottom: 0;
-  height: 0;
+  opacity:0;
 }
 .message-transition{
   transition:.5s ease all;

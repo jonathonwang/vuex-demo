@@ -18047,7 +18047,7 @@ describe('Actions', function () {
   });
 });
 
-},{"../../vuex/actions":46,"chai":5,"vue":42}],44:[function(require,module,exports){
+},{"../../vuex/actions":47,"chai":5,"vue":42}],44:[function(require,module,exports){
 'use strict';
 
 var _chai = require('chai');
@@ -18088,7 +18088,10 @@ describe('Alert Mutations', function () {
   }); // Hide Alert
 }); // Alert Mutations
 
-},{"../../vuex/modules/Alert":47,"chai":5,"vue":42}],45:[function(require,module,exports){
+},{"../../vuex/modules/Alert":48,"chai":5,"vue":42}],45:[function(require,module,exports){
+"use strict";
+
+},{}],46:[function(require,module,exports){
 'use strict';
 
 var _chai = require('chai');
@@ -18185,7 +18188,7 @@ describe('Task Mutations', function () {
   }); // Clear_Completed_Tasks
 }); // Task Mutations
 
-},{"../../vuex/modules/Task":48,"chai":5,"vue":42}],46:[function(require,module,exports){
+},{"../../vuex/modules/Task":49,"chai":5,"vue":42}],47:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18242,7 +18245,7 @@ var clearCompletedTasks = exports.clearCompletedTasks = function clearCompletedT
   dispatch(types.SHOW_ALERT, 'info', completedTasks.length + ' Completed Tasks Successfully Deleted');
 };
 
-},{"./mutation-types":49}],47:[function(require,module,exports){
+},{"./mutation-types":50}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18275,7 +18278,7 @@ exports.default = {
   mutations: mutations
 };
 
-},{"../mutation-types":49}],48:[function(require,module,exports){
+},{"../mutation-types":50}],49:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18341,7 +18344,7 @@ exports.default = {
   mutations: mutations
 };
 
-},{"../mutation-types":49}],49:[function(require,module,exports){
+},{"../mutation-types":50}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -18359,6 +18362,6 @@ var CLEAR_COMPLETED_TASKS = exports.CLEAR_COMPLETED_TASKS = 'CLEAR_COMPLETED_TAS
 var SHOW_ALERT = exports.SHOW_ALERT = 'SHOW_ALERT';
 var HIDE_ALERT = exports.HIDE_ALERT = 'HIDE_ALERT';
 
-},{}]},{},[45,44,43]);
+},{}]},{},[46,44,43,45]);
 
 //# sourceMappingURL=tests.js.map

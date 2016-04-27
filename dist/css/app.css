@@ -7948,8 +7948,16 @@ p {
 .text--white {
   color: #fff; }
 
-span.close-alert:hover {
-  cursor: pointer; }
+span.close-alert {
+  width: 20px;
+  height: 20px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  -webkit-transition: .4s ease all;
+  transition: .4s ease all; }
+  span.close-alert:hover {
+    border: 1px solid #fff;
+    cursor: pointer; }
 
 .alert {
   border-radius: 0;
@@ -7958,23 +7966,22 @@ span.close-alert:hover {
   left: 0;
   right: 0;
   z-index: 20;
-  border: 0 solid transparent; }
+  border: 0 solid transparent;
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+  font-weight: 400;
+  color: #fff; }
 
 .alert-danger {
-  background-color: #F03E6F;
-  color: white; }
+  background-color: #F03E6F; }
 
 .alert-success {
-  background-color: #30B399;
-  color: #e9f9f6; }
+  background-color: #30B399; }
 
 .alert-warning {
-  background-color: #EBC142;
-  color: white; }
+  background-color: #EBC142; }
 
 .alert-info {
-  background-color: #03A9F4;
-  color: #f7fcff; }
+  background-color: #03A9F4; }
 
 .label-danger {
   background-color: #F03E6F; }
@@ -8046,12 +8053,10 @@ span.close-alert:hover {
 .alert-transition {
   -webkit-transition: .5s ease all;
   transition: .5s ease all;
-  overflow: hidden; }
+  opacity: 1; }
 
 .alert-enter, .alert-leave {
-  padding-top: 0;
-  padding-bottom: 0;
-  height: 0; }
+  opacity: 0; }
 
 .message-transition {
   -webkit-transition: .5s ease all;

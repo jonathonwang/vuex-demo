@@ -1,5 +1,13 @@
-span.close-alert:hover{
-  cursor:pointer;
+span.close-alert{
+  width: 20px;
+  height: 20px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: .4s ease all;
+  &:hover{
+    border: 1px solid #fff;
+    cursor:pointer;
+  }
 }
 .alert{
   border-radius: 0;
@@ -9,20 +17,19 @@ span.close-alert:hover{
   right: 0;
   z-index: 20;
   border: 0 solid transparent;
+  font-family: $font;
+  font-weight: $font-medium;
+  color: #fff;
 }
 .alert-danger{
   background-color: $alert-danger;
-  color: lighten($alert-danger, 50%);
 }
 .alert-success{
   background-color: $alert-success;
-  color: lighten($alert-success, 50%);
 }
 .alert-warning{
   background-color: $alert-warning;
-  color: lighten($alert-warning, 50%);
 }
 .alert-info{
   background-color: $alert-info;
-  color: lighten($alert-info, 50%);
 }

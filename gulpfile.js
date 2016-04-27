@@ -61,7 +61,8 @@ elixir( (mix) => {
     .browserify([
       'Task/mutations.spec.js',
       'Alert/mutations.spec.js',
-      'Actions/actions.spec.js'
+      'Actions/actions.spec.js',
+      'E2E/e2e.spec.js'
     ], `${basePath.js.src}/test/tests.js`, `${basePath.js.src}/test/`)
 
     // Sass Task
