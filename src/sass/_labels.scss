@@ -1,3 +1,14 @@
+.label{
+  @media (max-width:$screen-sm-min){
+    width:100%;
+    display:block;
+  }
+  &+.label{
+    @media (max-width:$screen-sm-min){
+      margin-top:8px;
+    }
+  }
+}
 .label-danger{
   background-color: $label-danger-bg;
 }
