@@ -1,13 +1,16 @@
 import * as types from './mutation-types';
 
 export const createNewTask = ({ dispatch }, newTask) => {
-  if(newTask !== ''){
+  if(newTask === ''){
+    dispatch(types.SHOW_ALERT,'danger','New Task Cannot Be Empty');
+  }
+  else if(newTask.length <= 2) {
+    dispatch(types.SHOW_ALERT,'danger','New Task Must Be At Least 3 Characters Long');
+  }
+  else{
     dispatch(types.CREATE_TASK);
     dispatch(types.CLEAR_NEW_TASK);
     dispatch(types.SHOW_ALERT,'success',`Task "${newTask}" Successfully Created`);
-  }
-  else{
-    dispatch(types.SHOW_ALERT,'danger','New Task Cannot Be Empty');
   }
 };
 export const hideAlert = ({ dispatch }) => {

@@ -17979,11 +17979,12 @@ var testAction = function testAction(action, args, state, expectedMutations, don
 describe('Actions', function () {
 
   it('createNewTask', function (done) {
+    var newTask = 'Hello World';
     var state = {
       tasks: [],
       newTask: 'Hello World'
     };
-    testAction(actions.createNewTask, [], state, [{ name: 'CREATE_TASK' }, { name: 'CLEAR_NEW_TASK' }, { name: 'SHOW_ALERT' }], done);
+    testAction(actions.createNewTask, [newTask], state, [{ name: 'CREATE_TASK' }, { name: 'CLEAR_NEW_TASK' }, { name: 'SHOW_ALERT' }], done);
   });
 
   it('createNewTask No-Title', function (done) {
@@ -17991,6 +17992,15 @@ describe('Actions', function () {
     var state = {
       tasks: [],
       newTask: ''
+    };
+    testAction(actions.createNewTask, [newTask], state, [{ name: 'SHOW_ALERT' }], done);
+  });
+
+  it('createNewTask 2 Characters', function (done) {
+    var newTask = '';
+    var state = {
+      tasks: [],
+      newTask: 'Yo'
     };
     testAction(actions.createNewTask, [newTask], state, [{ name: 'SHOW_ALERT' }], done);
   });
@@ -18202,12 +18212,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var createNewTask = exports.createNewTask = function createNewTask(_ref, newTask) {
   var dispatch = _ref.dispatch;
 
-  if (newTask !== '') {
+  if (newTask === '') {
+    dispatch(types.SHOW_ALERT, 'danger', 'New Task Cannot Be Empty');
+  } else if (newTask.length <= 2) {
+    dispatch(types.SHOW_ALERT, 'danger', 'New Task Must Be At Least 3 Characters Long');
+  } else {
     dispatch(types.CREATE_TASK);
     dispatch(types.CLEAR_NEW_TASK);
     dispatch(types.SHOW_ALERT, 'success', 'Task "' + newTask + '" Successfully Created');
-  } else {
-    dispatch(types.SHOW_ALERT, 'danger', 'New Task Cannot Be Empty');
   }
 };
 var hideAlert = exports.hideAlert = function hideAlert(_ref2) {

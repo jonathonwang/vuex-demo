@@ -32,11 +32,12 @@ const testAction = (action, args, state, expectedMutations, done) => {
 describe('Actions', () => {
 
   it('createNewTask', (done) => {
+    let newTask = 'Hello World';
     let state = {
       tasks: [],
       newTask: 'Hello World'
     };
-    testAction(actions.createNewTask, [], state, [
+    testAction(actions.createNewTask, [newTask], state, [
       { name: 'CREATE_TASK' },
       { name: 'CLEAR_NEW_TASK' },
       { name: 'SHOW_ALERT' }
@@ -48,6 +49,17 @@ describe('Actions', () => {
     let state = {
       tasks: [],
       newTask: ''
+    };
+    testAction(actions.createNewTask, [newTask], state, [
+      { name: 'SHOW_ALERT' }
+    ], done );
+  });
+
+  it('createNewTask 2 Characters', (done) => {
+    let newTask = '';
+    let state = {
+      tasks: [],
+      newTask: 'Yo'
     };
     testAction(actions.createNewTask, [newTask], state, [
       { name: 'SHOW_ALERT' }
