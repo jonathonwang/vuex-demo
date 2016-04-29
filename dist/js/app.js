@@ -10924,7 +10924,7 @@ exports.default = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div>\n  <div id=\"alert\" transition=\"alert\" v-if=\"alertVisibility == 'visible'\" class=\"alert alert-{{alertStatus}} text-center\" role=\"alert\">\n    <span class=\"text-capitalize\" transition=\"message\" transition-mode=\"out-in\">\n      <span class=\"fa\" :class=\"{'fa-exclamation-circle': alertStatus == 'danger', 'fa-info-circle': alertStatus == 'info', 'fa-check-circle-o': alertStatus == 'success'}\"></span>\n      {{alertMessage}}\n    </span>\n    <span class=\"pull-right close-alert\" @click.prevent=\"hideAlert($event)\">×</span>\n  </div>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"row\">\n  <div id=\"alert\" transition=\"alert\" v-if=\"alertVisibility == 'visible'\" class=\"alert alert-{{alertStatus}} text-center col-xs-12\" role=\"alert\">\n    <span class=\"text-capitalize\" transition=\"message\" transition-mode=\"out-in\">\n      <span class=\"fa\" :class=\"{'fa-exclamation-circle': alertStatus == 'danger', 'fa-info-circle': alertStatus == 'info', 'fa-check-circle-o': alertStatus == 'success'}\"></span>\n      {{alertMessage}}\n    </span>\n    <span class=\"pull-right close-alert\" @click.prevent=\"hideAlert($event)\">×</span>\n  </div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

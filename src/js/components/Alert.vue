@@ -2,8 +2,8 @@
 </style>
 
 <template>
-  <div>
-    <div id="alert" transition="alert" v-if="alertVisibility == 'visible'" class="alert alert-{{alertStatus}} text-center" role="alert">
+  <div class="row">
+    <div id="alert" transition="alert" v-if="alertVisibility == 'visible'" class="alert alert-{{alertStatus}} text-center col-xs-12" role="alert">
       <span class="text-capitalize" transition="message" transition-mode="out-in">
         <span class="fa" :class="{'fa-exclamation-circle': alertStatus == 'danger', 'fa-info-circle': alertStatus == 'info', 'fa-check-circle-o': alertStatus == 'success'}"></span>
         {{alertMessage}}
