@@ -10614,7 +10614,7 @@ describe('Vuex E2E Test', function () {
     casper.start('http://vuex.app/');
   });
 
-  it('Retrieve Front Page', function () {
+  it('Front Page Title should Read "Vuex | Test"', function () {
     casper.then(function () {
       'Vuex | Test'.should.matchTitle;
     });
