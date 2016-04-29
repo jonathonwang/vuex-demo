@@ -4,7 +4,7 @@ Vue.use(Vuex);
 
 describe('Vuex E2E Test', () => {
   before( () => {
-    casper.start('http://vuex.app/');
+    casper.start('../../../../index.html');
   });
 
   it('Retrieve Front Page', () => {
