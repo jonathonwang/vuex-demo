@@ -10617,7 +10617,18 @@ describe('Vuex E2E Test', function () {
   it('Retrieve Front Page', function () {
     casper.then(function () {
       'Vuex | Test'.should.matchTitle;
+    });
+  });
+
+  it('Header should read "Todo"', function () {
+    casper.then(function () {
       casper.fetchText('h1').should.equal('Todo');
+    });
+  });
+
+  it('Form And Submit Button Should Be Visible', function () {
+    casper.then(function () {
+      casper.getHTML('form').should.not.equal('');
       casper.getHTML('button.btn.btn-primary').should.equal('<span class="fa fa-plus"></span>');
     });
   });

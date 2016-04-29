@@ -10,7 +10,18 @@ describe('Vuex E2E Test', () => {
   it('Retrieve Front Page', () => {
     casper.then( () => {
       'Vuex | Test'.should.matchTitle;
+    });
+  });
+
+  it('Header should read "Todo"', () => {
+    casper.then( () => {
       casper.fetchText('h1').should.equal('Todo');
+    });
+  });
+
+  it('Form And Submit Button Should Be Visible', () => {
+    casper.then( () => {
+      casper.getHTML('form').should.not.equal('');
       casper.getHTML('button.btn.btn-primary').should.equal('<span class="fa fa-plus"></span>');
     });
   });
