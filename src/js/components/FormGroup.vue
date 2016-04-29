@@ -8,9 +8,11 @@
       <li class="list-group-item">
         <form action="" style="margin-bottom:0;"  @submit.prevent="createNewTask(newTask)">
           <div class="input-group">
-            <input type="text" class="form-control" name="taskinput" :value="newTask" @input="updateNewTask($event.target.value)" placeholder="Create Some Tasks ..." autocomplete="off">
+            <label for="taskinput" class="sr-only">Task Title</label>
+            <input type="text" class="form-control" name="taskinput" id="taskinput" :value="newTask" @input="updateNewTask($event.target.value)" placeholder="Create Some Tasks ..." autocomplete="off">
             <span class="input-group-btn">
-              <button class="btn btn-primary"><span class="fa fa-plus"></span></button>
+              <label for="submit" class="sr-only">Submit</label>
+              <button id="submit" class="btn btn-primary"><span class="fa fa-plus"></span></button>
             </span>
           </div>
         </form>
