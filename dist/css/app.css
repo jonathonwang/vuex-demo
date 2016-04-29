@@ -8136,9 +8136,9 @@ input[type="checkbox"] {
   input[type="checkbox"]:checked {
     border: 1px solid transparent; }
     input[type="checkbox"]:checked:before {
-      color: #455EFE; }
+      color: #30B399; }
     input[type="checkbox"]:checked:hover:before {
-      color: #3849AC; }
+      color: #258b77; }
   input[type="checkbox"]:focus {
     outline: 0; }
 

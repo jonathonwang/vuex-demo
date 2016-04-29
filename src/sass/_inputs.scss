@@ -26,11 +26,11 @@ input[type="checkbox"]{
   &:checked{
     border: 1px solid transparent;
     &:before{
-      color: $brand-primary;
+      color: $alert-success;
     }
     &:hover{
       &:before{
-        color: $brand-primary-dark;
+        color: darken($alert-success,10%);
       }
     }
   }
