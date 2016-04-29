@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha src/js/test/TestBundle/tests.js && mocha-casperjs src/js/test/TestBundle/e2e.js",
+    "test": "mocha src/js/test/TestBundle/tests.js",
+    "test-suite": "mocha src/js/test/TestBundle/tests.js && mocha-casperjs src/js/test/TestBundle/e2e.js",
     "mocha-watch": "mocha src/js/test/tests.js --watch",
     "mocha-js": "mocha src/js/test/tests.js",
     "mocha-ui": "casperjs test src/js/test/E2E/e2e.spec.js"
