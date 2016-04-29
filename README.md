@@ -1,4 +1,5 @@
 <h1>Vuex-DEMO</h1>
+<img src="https://travis-ci.org/jonathonwang/vuex-demo.svg">
 <h4>to get started with Vuex</h4>
 
 <h5>Install</h5>
