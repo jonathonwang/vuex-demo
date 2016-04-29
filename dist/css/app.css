@@ -8017,6 +8017,10 @@ span.close-alert {
     -webkit-transform: scale(1.15, 1.15);
     transform: scale(1.15, 1.15); }
 
+.btn-clear:hover {
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1); }
+
 .btn-primary {
   background-color: #455EFE; }
   .btn-primary:hover {

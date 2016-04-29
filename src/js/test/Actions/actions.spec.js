@@ -11,7 +11,7 @@ const testAction = (action, args, state, expectedMutations, done) => {
   const dispatch = (name, ...payload) => {
     const mutation = expectedMutations[count];
     expect(mutation.name).to.equal(name);
-    if (mutation.payload) {
+    if (payload) {
       expect(mutation.payload).to.deep.equal(payload);
     }
     count++;
@@ -32,37 +32,34 @@ const testAction = (action, args, state, expectedMutations, done) => {
 describe('Actions', () => {
 
   it('createNewTask', (done) => {
-    let newTask = 'Hello World';
     let state = {
       tasks: [],
       newTask: 'Hello World'
     };
-    testAction(actions.createNewTask, [newTask], state, [
-      { name: 'CREATE_TASK' },
-      { name: 'CLEAR_NEW_TASK' },
-      { name: 'SHOW_ALERT' }
+    testAction(actions.createNewTask, [state.newTask], state, [
+      { name: 'CREATE_TASK', payload:[] },
+      { name: 'CLEAR_NEW_TASK', payload:[] },
+      { name: 'SHOW_ALERT', payload:['success','Task \"Hello World\" Successfully Created'] }
     ], done );
   });
 
   it('createNewTask No-Title', (done) => {
-    let newTask = '';
     let state = {
       tasks: [],
       newTask: ''
     };
-    testAction(actions.createNewTask, [newTask], state, [
-      { name: 'SHOW_ALERT' }
+    testAction(actions.createNewTask, [state.newTask], state, [
+      { name: 'SHOW_ALERT', payload:['danger','New Task Cannot Be Empty'] }
     ], done );
   });
 
   it('createNewTask 2 Characters', (done) => {
-    let newTask = '';
     let state = {
       tasks: [],
       newTask: 'Yo'
     };
-    testAction(actions.createNewTask, [newTask], state, [
-      { name: 'SHOW_ALERT' }
+    testAction(actions.createNewTask, [state.newTask], state, [
+      { name: 'SHOW_ALERT', payload:['danger', 'New Task Must Be At Least 3 Characters Long'] }
     ], done );
   });
 
@@ -71,17 +68,18 @@ describe('Actions', () => {
       alert: { status:'danger', message: 'Danger Message', visibility: 'visible' }
     };
     testAction(actions.hideAlert, [], state, [
-      { name: 'HIDE_ALERT' }
+      { name: 'HIDE_ALERT', payload:[] }
     ], done );
   });
 
   it('updateNewTask', (done) => {
+    let newTask = 'Hello World';
     let state = {
       tasks: [],
       newTask: ''
     };
-    testAction(actions.updateNewTask, [], state, [
-      { name: 'UPDATE_NEW_TASK' },
+    testAction(actions.updateNewTask, [newTask], state, [
+      { name: 'UPDATE_NEW_TASK', payload:['Hello World'] },
     ], done );
   });
 
@@ -92,8 +90,8 @@ describe('Actions', () => {
       newTask: ''
     };
     testAction(actions.deleteTask, [taskToDelete], state, [
-      { name: 'DELETE_TASK' },
-      { name: 'SHOW_ALERT' }
+      { name: 'DELETE_TASK', payload: [ { title: 'Hello World', status: 0 } ] },
+      { name: 'SHOW_ALERT', payload: ['info','Task \"Hello World\" Successfully Deleted'] }
     ], done );
   });
 
@@ -104,7 +102,7 @@ describe('Actions', () => {
       newTask: ''
     };
     testAction(actions.toggleTaskStatus, [taskToToggle], state, [
-      { name: 'COMPLETE_TASK' },
+      { name: 'COMPLETE_TASK', payload:[ { title: 'Hello World', status: 0 } ] },
     ], done );
   });
 
@@ -115,7 +113,7 @@ describe('Actions', () => {
       newTask: ''
     };
     testAction(actions.toggleTaskStatus, [taskToToggle], state, [
-      { name: 'UNCOMPLETE_TASK' },
+      { name: 'UNCOMPLETE_TASK', payload:[ { title: 'Hello World', status: 1 } ] },
     ], done );
   });
 
@@ -125,9 +123,9 @@ describe('Actions', () => {
       tasks: [...completedTasksToClear],
       newTask: ''
     };
-    testAction(actions.clearCompletedTasks, [...completedTasksToClear], state, [
-      { name: 'CLEAR_COMPLETED_TASKS' },
-      { name: 'SHOW_ALERT' }
+    testAction(actions.clearCompletedTasks, [completedTasksToClear], state, [
+      { name: 'CLEAR_COMPLETED_TASKS', payload:[ [{ status:1, title:'Hello World1' },{ status:1, title:'Hello World2' },{ status:1, title:'Hello World3' }] ] },
+      { name: 'SHOW_ALERT', payload:['info','3 Completed Tasks Successfully Deleted'] }
     ], done );
   });
 

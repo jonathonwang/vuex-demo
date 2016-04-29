@@ -39,7 +39,7 @@
       <li class="list-group-item" transition="task" v-if="completeTasks.length > 0">
         <div class="row">
           <div class="col-xs-12">
-            <button class="btn btn-block btn-default btn-lg" @click.prevent="clearCompletedTasks(completeTasks)">Clear Completed Tasks</button>
+            <button class="btn btn-block btn-default btn-lg btn-clear" @click.prevent="clearCompletedTasks(completeTasks)">Clear Completed Tasks</button>
           </div>
         </div>
       </li>

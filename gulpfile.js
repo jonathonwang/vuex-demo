@@ -62,11 +62,11 @@ elixir( (mix) => {
       'Task/mutations.spec.js',
       'Alert/mutations.spec.js',
       'Actions/actions.spec.js',
-    ], `${basePath.js.src}/test/TestBundle/tests.js`, `${basePath.js.src}/test/`)
+    ], `${basePath.js.src}/test/TestBundle/unit-tests.js`, `${basePath.js.src}/test/`)
     // Mocha E2E Task
     .browserify([
       'E2E/e2e.spec.js'
-    ], `${basePath.js.src}/test/TestBundle/e2e.js`, `${basePath.js.src}/test/`)
+    ], `${basePath.js.src}/test/TestBundle/e2e-tests.js`, `${basePath.js.src}/test/`)
 
 
     // Sass Task

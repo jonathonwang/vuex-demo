@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha src/js/test/TestBundle/tests.js",
-    "test-suite": "mocha src/js/test/TestBundle/tests.js && mocha-casperjs src/js/test/TestBundle/e2e.js",
-    "mocha-js": "mocha src/js/test/TestBundle/tests.js",
-    "mocha-ui": "mocha-casperjs src/js/test/TestBundle/e2e.js",
-    "mocha-js-watch": "mocha src/js/test/TestBundle/tests.js --watch"
+    "test": "mocha src/js/test/TestBundle/unit-tests.js",
+    "test-suite": "mocha src/js/test/TestBundle/unit-tests.js && mocha-casperjs src/js/test/TestBundle/e2e-tests.js",
+    "mocha-unit": "mocha src/js/test/TestBundle/unit-tests.js",
+    "mocha-e2e": "mocha-casperjs src/js/test/TestBundle/e2e-tests.js",
+    "mocha-unit-watch": "mocha src/js/test/TestBundle/unit-tests.js --watch"
   },
   "author": "",
   "license": "UNLICENSED",
