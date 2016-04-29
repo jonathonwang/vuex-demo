@@ -8013,6 +8013,9 @@ span.close-alert {
   .btn:focus {
     outline: 0;
     box-shadow: 0 0 0 0 transparent; }
+  .btn:hover {
+    -webkit-transform: scale(1.15, 1.15);
+    transform: scale(1.15, 1.15); }
 
 .btn-primary {
   background-color: #455EFE; }
