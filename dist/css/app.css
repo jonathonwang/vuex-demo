@@ -7983,14 +7983,15 @@ span.close-alert {
 .alert-info {
   background-color: #03A9F4; }
 
-@media (max-width: 768px) {
-  .label {
-    width: 100%;
-    display: block; } }
-
-@media (max-width: 768px) {
-  .label + .label {
-    margin-top: 8px; } }
+.label {
+  padding: 4px 8px 5px 8px; }
+  @media (max-width: 480px) {
+    .label {
+      width: 100%;
+      display: block; } }
+  @media (max-width: 768px) {
+    .label + .label {
+      margin-top: 8px; } }
 
 .label-danger {
   background-color: #F03E6F; }

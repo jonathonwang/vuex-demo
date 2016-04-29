@@ -10611,7 +10611,7 @@ _vue2.default.use(_vuex2.default);
 
 describe('Vuex E2E Test', function () {
   before(function () {
-    casper.start('http://vuex.app/');
+    casper.start('../../../../index.html');
   });
 
   it('Retrieve Front Page', function () {

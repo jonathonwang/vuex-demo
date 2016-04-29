@@ -2,12 +2,14 @@
 </style>
 
 <template>
-  <div id="alert" transition="alert" v-if="alertVisibility == 'visible'" class="alert alert-{{alertStatus}} text-center" role="alert">
-    <span class="text-capitalize" transition="message" transition-mode="out-in">
-      <span class="fa" :class="{'fa-exclamation-circle': alertStatus == 'danger', 'fa-info-circle': alertStatus == 'info', 'fa-check-circle-o': alertStatus == 'success'}"></span>
-      {{alertMessage}}
-    </span>
-    <span class="pull-right close-alert" @click.prevent="hideAlert($event)">&times;</span>
+  <div>
+    <div id="alert" transition="alert" v-if="alertVisibility == 'visible'" class="alert alert-{{alertStatus}} text-center" role="alert">
+      <span class="text-capitalize" transition="message" transition-mode="out-in">
+        <span class="fa" :class="{'fa-exclamation-circle': alertStatus == 'danger', 'fa-info-circle': alertStatus == 'info', 'fa-check-circle-o': alertStatus == 'success'}"></span>
+        {{alertMessage}}
+      </span>
+      <span class="pull-right close-alert" @click.prevent="hideAlert($event)">&times;</span>
+    </div>
   </div>
 </template>
 
