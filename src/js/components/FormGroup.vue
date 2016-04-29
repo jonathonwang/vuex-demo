@@ -7,7 +7,7 @@
     <li class="list-group-item">
       <form action="" style="margin-bottom:0;"  @submit.prevent="createNewTask(newTask)">
         <div class="input-group">
-          <input type="text" class="form-control" :value="newTask" @input="updateNewTask($event.target.value)" placeholder="Create Some Tasks ...">
+          <input type="text" class="form-control" name="taskinput" :value="newTask" @input="updateNewTask($event.target.value)" placeholder="Create Some Tasks ..." autocomplete="off">
           <span class="input-group-btn">
             <button class="btn btn-primary"><span class="fa fa-plus"></span></button>
           </span>
